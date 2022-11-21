@@ -1,18 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div>
+    <div>
+      {{ counter }}
+    </div>
+    <button @click="increment">increment</button>
+  </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
-
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+<script lang="ts" setup>
+import { useEffect, useState } from "./utils/ReactHook";
+const [counter, setCounter] = useState<number>(0);
+const increment = () => setCounter(++counter.value);
+useEffect(()=>{
+  setCounter(100)
+},[])
 </script>
 
 <style>
