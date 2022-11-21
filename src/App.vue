@@ -9,11 +9,18 @@
 
 <script lang="ts" setup>
 import { useEffect, useState } from "./utils/ReactHook";
-const [counter, setCounter] = useState<number>(0);
-const increment = () => setCounter(++counter.value);
-useEffect(()=>{
-  setCounter(100)
-},[])
+const useCounter = () => {
+  const [counter, setCounter] = useState<number>(0);
+  const increment = () => setCounter(++counter.value);
+  useEffect(() => {
+    setCounter(100);
+  }, []);
+  return {
+    increment,
+    counter,
+  };
+};
+const { counter, increment } = useCounter();
 </script>
 
 <style>
